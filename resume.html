@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sreelakshmi V — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum-deep: #3b1f4e;
+    --plum-mid: #6b3fa0;
+    --plum-light: #9b6ec8;
+    --plum-pale: #e8d8f5;
+    --plum-blush: #f4eefb;
+    --white: #ffffff;
+    --text-dark: #1e0f2b;
+    --text-mid: #4a3060;
+    --text-soft: #7a5c99;
+    --accent: #c084fc;
+    --border: #dcc8f0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--plum-deep);
+    color: white;
+    padding: 72px 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(155,110,200,0.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 20%;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(192,132,252,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header-inner { position: relative; z-index: 1; }
+
+  .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 300;
+    letter-spacing: -1px;
+    line-height: 1;
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 32px;
+    letter-spacing: 0.5px;
+  }
+
+  .contact-bar {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .contact-bar a, .contact-bar span {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: color 0.2s;
+  }
+
+  .contact-bar a:hover { color: var(--accent); }
+
+  .contact-bar .dot {
+    width: 5px; height: 5px;
+    background: var(--plum-light);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 80px;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 0;
+    align-items: start;
+  }
+
+  /* ── SIDEBAR ── */
+  aside {
+    background: var(--plum-blush);
+    padding: 52px 36px;
+    min-height: 100vh;
+    border-left: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+  }
+
+  .aside-section { margin-bottom: 44px; }
+
+  .aside-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--plum-mid);
+    margin-bottom: 16px;
+  }
+
+  .skill-group { margin-bottom: 18px; }
+
+  .skill-group-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-mid);
+    margin-bottom: 8px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--text-mid);
+    font-size: 11.5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 400;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .tag:hover {
+    background: var(--plum-pale);
+    border-color: var(--plum-light);
+  }
+
+  .edu-item { margin-bottom: 20px; }
+
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--plum-deep);
+    line-height: 1.3;
+  }
+
+  .edu-school {
+    font-size: 12px;
+    color: var(--text-soft);
+    margin-top: 3px;
+  }
+
+  .edu-meta {
+    font-size: 11px;
+    color: var(--plum-light);
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .content { padding: 52px 56px 52px 80px; }
+
+  .section { margin-bottom: 56px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--plum-deep);
+    letter-spacing: -0.5px;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent);
+  }
+
+  /* ── SUMMARY ── */
+  .summary-text {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--text-mid);
+    font-weight: 300;
+    border-left: 3px solid var(--plum-light);
+    padding-left: 24px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.25s, transform 0.25s;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 32px rgba(107, 63, 160, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--plum-mid), var(--plum-light));
+    border-radius: 12px 0 0 12px;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--plum-deep);
+    line-height: 1.3;
+    max-width: 480px;
+  }
+
+  .card-date {
+    font-size: 12px;
+    color: var(--plum-light);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    margin-top: 3px;
+  }
+
+  .card ul {
+    list-style: none;
+    margin-top: 12px;
+  }
+
+  .card ul li {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 6px;
+    font-weight: 300;
+  }
+
+  .card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--plum-light);
+    font-size: 12px;
+  }
+
+  /* ── KNOWLEDGE PILLS ── */
+  .knowledge-section {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .knowledge-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--plum-light);
+    margin-bottom: 10px;
+  }
+
+  .knowledge-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .k-pill {
+    background: var(--plum-blush);
+    border: 1px solid var(--plum-pale);
+    color: var(--plum-mid);
+    font-size: 11.5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 400;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--plum-deep);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 28px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card {
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .card:nth-child(1) { animation-delay: 0.05s; }
+  .card:nth-child(2) { animation-delay: 0.12s; }
+  .card:nth-child(3) { animation-delay: 0.19s; }
+  .card:nth-child(4) { animation-delay: 0.26s; }
+  .card:nth-child(5) { animation-delay: 0.33s; }
+
+  @media (max-width: 860px) {
+    main { grid-template-columns: 1fr; }
+    aside { position: static; min-height: unset; border-left: none; border-top: 1px solid var(--border); }
+    header { padding: 48px 28px 40px; }
+    .content { padding: 36px 28px; }
+    .container { padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="name">Sreelakshmi <em>V</em></div>
+    <div class="tagline">Integrated M.Sc. Data Science &nbsp;·&nbsp; ML Researcher &amp; Engineer</div>
+    <div class="contact-bar">
+      <a href="mailto:sreelakshmivijay64@gmail.com">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        sreelakshmivijay64@gmail.com
+      </a>
+      <span class="dot"></span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +91 94445 43501
+      </span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- MAIN CONTENT -->
+  <div class="content">
+
+    <!-- SUMMARY -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">About</div>
+        <div class="section-line"></div>
+      </div>
+      <p class="summary-text">
+        Fourth-year Integrated M.Sc. Data Science student with a strong focus on machine learning, deep learning, and interdisciplinary research. Experience spans IoT anomaly detection, multimodal learning, environmental prediction, and healthcare time-series modeling — working with Graph Neural Networks, spectral analysis, Neural ODEs, and Transformer architectures. Passionate about building scalable, research-driven solutions that bridge theoretical innovation with real-world impact.
+      </p>
+    </div>
+
+    <!-- RESEARCH PROJECTS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Research Projects</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Hybrid Graph–Spectral Anomaly Detection for IoT Systems</div>
+          <div class="card-date">Nov 2025 – Mar 2026</div>
+        </div>
+        <ul>
+          <li>Developed a hybrid anomaly detection framework combining GNNs with frequency-domain analysis for multivariate IoT sensor data.</li>
+          <li>Modeled inter-sensor relationships using graph structures (PyTorch Geometric) and captured spectral patterns via Welch PSD and Wavelet transforms.</li>
+          <li>Applied Generalized Pareto Distribution thresholding to improve robustness and reduce false positives.</li>
+          <li>Evaluated with F1-score, ROC-AUC, and PR-AUC, demonstrating improved detection of subtle and periodic anomalies.</li>
+        </ul>
+        <div class="knowledge-section">
+          <div class="knowledge-label">Key Learnings</div>
+          <div class="knowledge-pills">
+            <span class="k-pill">Spatio-temporal dependencies</span>
+            <span class="k-pill">Graph-based learning</span>
+            <span class="k-pill">Fourier & Wavelet analysis</span>
+            <span class="k-pill">Spectral anomaly detection</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Multilingual Sign Language Recognition via NLP Semantic Re-ranking</div>
+          <div class="card-date">Nov 2025 – Mar 2026</div>
+        </div>
+        <ul>
+          <li>Built a multimodal pipeline integrating computer vision, rule-based motion descriptions, and NLP for ISL and ASL recognition.</li>
+          <li>Extracted pose, hand, and facial landmarks using MediaPipe to generate structured motion descriptions from keypoint data.</li>
+          <li>Applied Sentence-BERT (all-MiniLM-L6-v2) for semantic embedding and re-ranked ANN predictions using cosine similarity.</li>
+          <li>Improved accuracy by resolving ambiguities in visually similar signs through semantic context.</li>
+        </ul>
+        <div class="knowledge-section">
+          <div class="knowledge-label">Key Learnings</div>
+          <div class="knowledge-pills">
+            <span class="k-pill">Multimodal learning</span>
+            <span class="k-pill">Semantic similarity</span>
+            <span class="k-pill">Embedding-based retrieval</span>
+            <span class="k-pill">Cross-lingual disambiguation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Wildfire Risk Prediction via Multi-Task Learning & Evolutionary Feature Selection</div>
+          <div class="card-date">Dec 2025 – Mar 2026</div>
+        </div>
+        <ul>
+          <li>Integrated wildfire datasets from Algeria, Morocco, and Portugal into a unified feature space with synthesized fire weather indices.</li>
+          <li>Applied Genetic Algorithm-based feature selection with region-weighted AUC optimization for robust predictor identification.</li>
+          <li>Designed a region-aware multi-task neural network with shared representation learning and soft gating for climate-specific modeling.</li>
+          <li>Simultaneously performed fire classification, burned area estimation, and risk prediction using a unified architecture.</li>
+        </ul>
+        <div class="knowledge-section">
+          <div class="knowledge-label">Key Learnings</div>
+          <div class="knowledge-pills">
+            <span class="k-pill">Multi-task learning</span>
+            <span class="k-pill">Evolutionary algorithms</span>
+            <span class="k-pill">Class imbalance handling</span>
+            <span class="k-pill">Climate variability modeling</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Deep Learning for Pharmacokinetics: Neural ODE vs Transformer</div>
+          <div class="card-date">Nov 2025 – Mar 2026</div>
+        </div>
+        <ul>
+          <li>Built a simulation pipeline for drug concentration dynamics using pharmacokinetic ODE models with numerical solvers (RK45, LSODA, Radau).</li>
+          <li>Generated synthetic patient populations via Monte Carlo sampling to model inter-individual variability.</li>
+          <li>Implemented and benchmarked Neural ODEs and Transformer-based models for continuous-time prediction tasks.</li>
+          <li>Investigated trade-offs between physics-informed modeling and data-driven approaches in healthcare time-series.</li>
+        </ul>
+        <div class="knowledge-section">
+          <div class="knowledge-label">Key Learnings</div>
+          <div class="knowledge-pills">
+            <span class="k-pill">Pharmacokinetics fundamentals</span>
+            <span class="k-pill">Neural ODEs</span>
+            <span class="k-pill">Physics-informed modeling</span>
+            <span class="k-pill">Transformer time-series</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECHNICAL PROJECTS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">Technical Projects</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Online Ticket Reservation System</div>
+          <div class="card-date">Jul 2024 – Jan 2025</div>
+        </div>
+        <ul>
+          <li>Developed a full-stack web application using Python (Django) with PostgreSQL for trains, flights, and buses.</li>
+          <li>Implemented user-side booking with real-time database updates and admin-side CRUD schedule management.</li>
+          <li>Integrated Django's built-in authentication system for secure role-based access and form validation.</li>
+          <li>Optimized queries using Django ORM to minimize redundant database operations.</li>
+        </ul>
+        <div class="knowledge-section">
+          <div class="knowledge-label">Stack</div>
+          <div class="knowledge-pills">
+            <span class="k-pill">Django</span>
+            <span class="k-pill">PostgreSQL</span>
+            <span class="k-pill">Django ORM</span>
+            <span class="k-pill">HTML / CSS</span>
+            <span class="k-pill">Django Auth</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- SIDEBAR -->
+  <aside>
+
+    <div class="aside-section">
+      <div class="aside-label">Education</div>
+
+      <div class="edu-item">
+        <div class="edu-degree">Integrated M.Sc. Data Science</div>
+        <div class="edu-school">Amrita Vishwa Vidyapeetham</div>
+        <div class="edu-meta">2022 – 2027 &nbsp;·&nbsp; CGPA 7.84/10</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-degree">Senior Secondary (XII)</div>
+        <div class="edu-school">CS Academy, Coimbatore</div>
+        <div class="edu-meta">2021 – 2022 &nbsp;·&nbsp; 84.4%</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-degree">Higher Secondary (X)</div>
+        <div class="edu-school">CS Academy, Erode</div>
+        <div class="edu-meta">2019 – 2020 &nbsp;·&nbsp; 86.6%</div>
+      </div>
+    </div>
+
+    <div class="aside-section">
+      <div class="aside-label">Programming</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">TensorFlow</span>
+        <span class="tag">Django</span>
+      </div>
+    </div>
+
+    <div class="aside-section">
+      <div class="aside-label">ML / DL Methods</div>
+      <div class="skill-tags">
+        <span class="tag">CNNs</span>
+        <span class="tag">Transformers</span>
+        <span class="tag">Neural ODEs</span>
+        <span class="tag">GNNs</span>
+        <span class="tag">Multi-task Learning</span>
+        <span class="tag">Contrastive Learning</span>
+        <span class="tag">Supervised &amp; Unsupervised</span>
+      </div>
+    </div>
+
+    <div class="aside-section">
+      <div class="aside-label">Tools &amp; Libraries</div>
+      <div class="skill-tags">
+        <span class="tag">MediaPipe</span>
+        <span class="tag">SBERT</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">SciPy</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">PyG</span>
+      </div>
+    </div>
+
+    <div class="aside-section">
+      <div class="aside-label">Databases &amp; Web</div>
+      <div class="skill-tags">
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Django ORM</span>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+      </div>
+    </div>
+
+    <div class="aside-section">
+      <div class="aside-label">Concepts</div>
+      <div class="skill-tags">
+        <span class="tag">Genetic Algorithms</span>
+        <span class="tag">Monte Carlo</span>
+        <span class="tag">Statistical Modeling</span>
+        <span class="tag">Spectral Analysis</span>
+        <span class="tag">Feature Engineering</span>
+      </div>
+    </div>
+
+  </aside>
+</main>
+
+<footer>
+  Sreelakshmi V &nbsp;·&nbsp; Data Science Researcher &nbsp;·&nbsp; Amrita Vishwa Vidyapeetham
+</footer>
+
+</body>
+</html>
